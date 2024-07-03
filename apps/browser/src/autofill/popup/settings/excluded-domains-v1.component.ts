@@ -1,31 +1,15 @@
-import { CommonModule } from "@angular/common";
 import { Component, NgZone, OnDestroy, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { Router, RouterModule } from "@angular/router";
+import { Router } from "@angular/router";
 import { firstValueFrom } from "rxjs";
 
-import { JslibModule } from "@bitwarden/angular/jslib.module";
 import { DomainSettingsService } from "@bitwarden/common/autofill/services/domain-settings.service";
 import { BroadcasterService } from "@bitwarden/common/platform/abstractions/broadcaster.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/platform/abstractions/platform-utils.service";
 import { Utils } from "@bitwarden/common/platform/misc/utils";
-import {
-  ItemModule,
-  CardComponent,
-  SectionComponent,
-  SectionHeaderComponent,
-  TypographyModule,
-  FormFieldModule,
-  ButtonModule,
-} from "@bitwarden/components";
 
 import { BrowserApi } from "../../../platform/browser/browser-api";
 import { enableAccountSwitching } from "../../../platform/flags";
-import { PopOutComponent } from "../../../platform/popup/components/pop-out.component";
-import { PopupFooterComponent } from "../../../platform/popup/layout/popup-footer.component";
-import { PopupHeaderComponent } from "../../../platform/popup/layout/popup-header.component";
-import { PopupPageComponent } from "../../../platform/popup/layout/popup-page.component";
 
 interface ExcludedDomain {
   uri: string;
@@ -35,28 +19,10 @@ interface ExcludedDomain {
 const BroadcasterSubscriptionId = "excludedDomains";
 
 @Component({
-  selector: "app-excluded-domains",
-  templateUrl: "excluded-domains.component.html",
-  standalone: true,
-  imports: [
-    ButtonModule,
-    CommonModule,
-    JslibModule,
-    RouterModule,
-    PopupPageComponent,
-    PopupHeaderComponent,
-    PopOutComponent,
-    PopupFooterComponent,
-    ItemModule,
-    CardComponent,
-    SectionComponent,
-    SectionHeaderComponent,
-    TypographyModule,
-    FormFieldModule,
-    FormsModule,
-  ],
+  selector: "app-excluded-domains-v1",
+  templateUrl: "excluded-domains-v1.component.html",
 })
-export class ExcludedDomainsComponent implements OnInit, OnDestroy {
+export class ExcludedDomainsV1Component implements OnInit, OnDestroy {
   excludedDomains: ExcludedDomain[] = [];
   existingExcludedDomains: ExcludedDomain[] = [];
   currentUris: string[];
