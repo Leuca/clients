@@ -13,7 +13,7 @@ switch (process.platform) {
     break;
 
     default:
-        targets = ['x86_64-unknown-linux-musl'];
+        targets = ['x86_64-unknown-linux-gnu'];
         process.env["PKG_CONFIG_ALLOW_CROSS"] = "1";
         process.env["PKG_CONFIG_ALL_STATIC"] = "1";
     break;
