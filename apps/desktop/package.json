@@ -55,6 +55,8 @@
     "upload:mas": "xcrun altool --upload-app --type osx --file \"$(find ./dist/mas-universal/Bitwarden*.pkg)\" --apiKey $APP_STORE_CONNECT_AUTH_KEY --apiIssuer $APP_STORE_CONNECT_TEAM_ISSUER",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:watch:all": "jest --watchAll"
+    "test:watch:all": "jest --watchAll",
+    "rpm:x64": "npm run build-native && npm run build && npm run clean:dist && electron-builder --linux rpm --x64 -p never",
+    "rpm:arm64": "npm run build-native && npm run build && npm run clean:dist && USE_SYSTEM_FPM=true electron-builder --linux rpm --arm64 -p never"
   }
 }
