@@ -195,6 +195,13 @@ export class NativeMessagingMain {
           );
         }
 
+        if (existsSync(`${this.homedir()}/.config/chromium/`)) {
+          await this.writeManifest(
+            `${this.homedir()}/.config/chromium/NativeMessagingHosts/com.8bit.bitwarden.json`,
+            chromeJson,
+          );
+        }
+
         if (existsSync(`${this.homedir()}/.config/microsoft-edge/`)) {
           await this.writeManifest(
             `${this.homedir()}/.config/microsoft-edge/NativeMessagingHosts/com.8bit.bitwarden.json`,
@@ -265,6 +272,9 @@ export class NativeMessagingMain {
         );
         await this.removeIfExists(
           `${this.homedir()}/.config/google-chrome/NativeMessagingHosts/com.8bit.bitwarden.json`,
+        );
+        await this.removeIfExists(
+          `${this.homedir()}/.config/chromium/NativeMessagingHosts/com.8bit.bitwarden.json`,
         );
         await this.removeIfExists(
           `${this.homedir()}/.config/microsoft-edge/NativeMessagingHosts/com.8bit.bitwarden.json`,
